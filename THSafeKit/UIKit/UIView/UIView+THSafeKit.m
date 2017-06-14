@@ -17,6 +17,7 @@
     dispatch_once(&onceToken, ^{
         
         [self exchangeImplementationsWithClass:@"UIView" fromMethodSelector:@selector(addSubview:) toMethodSelector:@selector(safe_addSubview:) isInstanceMethod:YES];
+        [self exchangeImplementationsWithClass:@"UIView" fromMethodSelector:@selector(insertSubview:atIndex:) toMethodSelector:@selector(safe_insertSubview:atIndex:) isInstanceMethod:YES];
     });
 }
 
@@ -24,6 +25,17 @@
 {
     @try {
         [self safe_addSubview:view];
+    } @catch (NSException *exception) {
+        
+    } @finally {
+        
+    }
+}
+
+- (void)safe_insertSubview:(UIView *)view atIndex:(NSInteger)index
+{
+    @try {
+        [self safe_insertSubview:view atIndex:index];
     } @catch (NSException *exception) {
         
     } @finally {
