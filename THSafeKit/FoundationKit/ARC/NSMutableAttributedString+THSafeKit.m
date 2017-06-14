@@ -20,6 +20,9 @@
         [self exchangeImplementationsWithClass:@"NSConcreteMutableAttributedString" fromMethodSelector:@selector(initWithString:attributes:) toMethodSelector:@selector(safe_initWithString:attributes:) isInstanceMethod:YES];
         [self exchangeImplementationsWithClass:@"NSConcreteMutableAttributedString" fromMethodSelector:@selector(addAttribute:value:range:) toMethodSelector:@selector(safe_addAttribute:value:range:) isInstanceMethod:YES];
         [self exchangeImplementationsWithClass:@"NSConcreteMutableAttributedString" fromMethodSelector:@selector(addAttributes:range:) toMethodSelector:@selector(safe_addAttributes:range:) isInstanceMethod:YES];
+        [self exchangeImplementationsWithClass:@"NSConcreteMutableAttributedString" fromMethodSelector:@selector(replaceCharactersInRange:withString:) toMethodSelector:@selector(safe_replaceCharactersInRange:withString:) isInstanceMethod:YES];
+        [self exchangeImplementationsWithClass:@"NSConcreteMutableAttributedString" fromMethodSelector:@selector(setAttributes:range:) toMethodSelector:@selector(safe_setAttributes:range:) isInstanceMethod:YES];
+        
     });
 }
 
@@ -84,6 +87,28 @@
 {
     @try {
         [self safe_addAttributes:attrs range:range];
+    } @catch (NSException *exception) {
+        
+    } @finally {
+        
+    }
+}
+
+- (void)safe_replaceCharactersInRange:(NSRange)range withString:(NSString *)aString
+{
+    @try {
+        [self safe_replaceCharactersInRange:range withString:aString];
+    } @catch (NSException *exception) {
+        
+    } @finally {
+        
+    }
+}
+
+- (void)safe_setAttributes:(nullable NSDictionary<NSString *, id> *)attrs range:(NSRange)range
+{
+    @try {
+        [self safe_setAttributes:attrs range:range];
     } @catch (NSException *exception) {
         
     } @finally {

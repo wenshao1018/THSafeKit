@@ -19,6 +19,7 @@
         [self exchangeImplementationsWithClass:@"__NSCFString" fromMethodSelector:@selector(appendFormat:) toMethodSelector:@selector(safe_appendFormat:) isInstanceMethod:YES];
         [self exchangeImplementationsWithClass:@"__NSCFString" fromMethodSelector:@selector(setString:) toMethodSelector:@selector(safe_setString:) isInstanceMethod:YES];
         [self exchangeImplementationsWithClass:@"__NSCFString" fromMethodSelector:@selector(insertString:atIndex:) toMethodSelector:@selector(safe_insertString:atIndex:) isInstanceMethod:YES];
+        [self exchangeImplementationsWithClass:@"__NSCFString" fromMethodSelector:@selector(deleteCharactersInRange:) toMethodSelector:@selector(safe_deleteCharactersInRange:) isInstanceMethod:YES];
         [self exchangeImplementationsWithClass:@"__NSCFString" fromMethodSelector:@selector(replaceCharactersInRange:withString:) toMethodSelector:@selector(safe_replaceCharactersInRange:withString:) isInstanceMethod:YES];
     });
 }
@@ -61,6 +62,17 @@
     }
     
     [self safe_insertString:aString atIndex:index];
+}
+
+- (void)safe_deleteCharactersInRange:(NSRange)range
+{
+    @try {
+        [self safe_deleteCharactersInRange:range];
+    } @catch (NSException *exception) {
+        
+    } @finally {
+        
+    }
 }
 
 - (void)safe_replaceCharactersInRange:(NSRange)range withString:(NSString *)aString

@@ -18,6 +18,7 @@
         [self exchangeImplementationsWithClass:@"NSConcreteAttributedString" fromMethodSelector:@selector(initWithString:) toMethodSelector:@selector(safe_initWithString:) isInstanceMethod:YES];
         [self exchangeImplementationsWithClass:@"NSConcreteAttributedString" fromMethodSelector:@selector(initWithAttributedString:) toMethodSelector:@selector(safe_initWithAttributedString:) isInstanceMethod:YES];
         [self exchangeImplementationsWithClass:@"NSConcreteAttributedString" fromMethodSelector:@selector(initWithString:attributes:) toMethodSelector:@selector(safe_initWithString:attributes:) isInstanceMethod:YES];
+        [self exchangeImplementationsWithClass:@"NSConcreteAttributedString" fromMethodSelector:@selector(attributesAtIndex:effectiveRange:) toMethodSelector:@selector(safe_attributesAtIndex:effectiveRange:) isInstanceMethod:YES];
     });
 }
 
@@ -59,7 +60,22 @@
         object = [self safe_initWithString:str attributes:attrs];
     }
     @catch (NSException *exception) {
+        
+    }
+    @finally {
+        return object;
+    }
+}
 
+- (NSDictionary<NSString *, id> *)safe_attributesAtIndex:(NSUInteger)location effectiveRange:(nullable NSRangePointer)range
+{
+    id object = nil;
+    
+    @try {
+        object = [self safe_attributesAtIndex:location effectiveRange:range];
+    }
+    @catch (NSException *exception) {
+        
     }
     @finally {
         return object;

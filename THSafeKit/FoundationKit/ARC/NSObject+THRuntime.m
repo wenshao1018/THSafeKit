@@ -13,7 +13,7 @@
 
 - (void)thdealloc
 {
-    //统一处理部分事情
+    //统一处理一些事情，例如数据统计等
     [self thdealloc];
 }
 
