@@ -1,6 +1,11 @@
 # 忽略Xcode项目文件
+*.xcuserstate
 project.xcworkspace
+xcuserdata
+UserInterfaceState.xcuserstate
+project.xcworkspace/
 xcuserdata/
+UserInterface.xcuserstate
 
 # 忽略苹果自动创建的文件
 .DS_Store
