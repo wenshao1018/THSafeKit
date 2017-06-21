@@ -22,6 +22,7 @@
         [self exchangeImplementationsWithClass:@"UITableView" fromMethodSelector:@selector(deleteSections:withRowAnimation:) toMethodSelector:@selector(safe_deleteSections:withRowAnimation:) isInstanceMethod:YES];
         [self exchangeImplementationsWithClass:@"UITableView" fromMethodSelector:@selector(moveRowAtIndexPath:toIndexPath:) toMethodSelector:@selector(safe_moveRowAtIndexPath:toIndexPath:) isInstanceMethod:YES];
         [self exchangeImplementationsWithClass:@"UITableView" fromMethodSelector:@selector(moveSection:toSection:) toMethodSelector:@selector(safe_moveSection:toSection:) isInstanceMethod:YES];
+        [self exchangeImplementationsWithClass:@"UITableView" fromMethodSelector:@selector(scrollToRowAtIndexPath:atScrollPosition:animated:) toMethodSelector:@selector(safe_scrollToRowAtIndexPath:atScrollPosition:animated:) isInstanceMethod:YES];
     });
 }
 
@@ -84,6 +85,17 @@
 {
     @try {
         [self safe_moveSection:section toSection:newSection];
+    } @catch (NSException *exception) {
+        
+    } @finally {
+        
+    }
+}
+
+- (void)safe_scrollToRowAtIndexPath:(NSIndexPath *)indexPath atScrollPosition:(UITableViewScrollPosition)scrollPosition animated:(BOOL)animated
+{
+    @try {
+        [self safe_scrollToRowAtIndexPath:indexPath atScrollPosition:scrollPosition animated:animated];
     } @catch (NSException *exception) {
         
     } @finally {
