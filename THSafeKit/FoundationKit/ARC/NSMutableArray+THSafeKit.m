@@ -25,41 +25,46 @@
 
 - (void)safe_addObject:(id)anObject
 {
-    if (!anObject) {
-        return;
+    @try {
+        [self safe_addObject:anObject];
+    } @catch (NSException *exception) {
+        
+    } @finally {
+        
     }
-    [self safe_addObject:anObject];
 }
 
 - (void)safe_insertObject:(id)object atIndex:(NSUInteger)index
 {
-    if (!object) {
-        return;
+    @try {
+        [self safe_insertObject:object atIndex:index];
+    } @catch (NSException *exception) {
+        
+    } @finally {
+        
     }
-    if (index > self.count) {
-        return;
-    }
-    [self safe_insertObject:object atIndex:index];
 }
 
 - (void)safe_removeObjectAtIndex:(NSUInteger)index
 {
-    if (index >= self.count) {
-        return;
+    @try {
+        [self safe_removeObjectAtIndex:index];
+    } @catch (NSException *exception) {
+        
+    } @finally {
+        
     }
-    
-    return [self safe_removeObjectAtIndex:index];
 }
 
 - (void)safe_replaceObjectAtIndex:(NSUInteger)index withObject:(id)anObject
 {
-    if (index >= self.count) {
-        return;
+    @try {
+        [self safe_replaceObjectAtIndex:index withObject:anObject];
+    } @catch (NSException *exception) {
+        
+    } @finally {
+        
     }
-    if (!anObject) {
-        return;
-    }
-    [self safe_replaceObjectAtIndex:index withObject:anObject];
 }
 
 @end

@@ -22,18 +22,28 @@
 
 - (BOOL)safe_isEqualToNumber:(NSNumber *)number
 {
-    if (!number) {
-        return NO;
+    BOOL isEqual = NO;
+    @try {
+        isEqual = [self safe_isEqualToNumber:number];
+    } @catch (NSException *exception) {
+        
+    } @finally {
+        
     }
-    return [self safe_isEqualToNumber:number];
+    return isEqual;
 }
 
 - (NSComparisonResult)safe_compare:(NSNumber *)number
 {
-    if (!number) {
-        return NSOrderedAscending;
+    NSComparisonResult result;
+    @try {
+        result = [self safe_compare:number];
+    } @catch (NSException *exception) {
+        
+    } @finally {
+        
     }
-    return [self safe_compare:number];
+    return result;
 }
 
 @end

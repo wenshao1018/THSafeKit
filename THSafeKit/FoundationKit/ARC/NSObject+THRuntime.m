@@ -8,12 +8,17 @@
 
 #import "NSObject+THRuntime.h"
 #import <objc/runtime.h>
+#import <UIKit/UIKit.h>
 
 @implementation NSObject (THRuntime)
 
 - (void)thdealloc
 {
-    //统一处理一些事情，例如数据统计等
+    if ([self isKindOfClass:[UIViewController class]]) {
+        NSLog(@"-------------------------------");
+        NSLog(@"%@------->dealloc",self.class);
+        NSLog(@"-------------------------------");
+    }
     [self thdealloc];
 }
 

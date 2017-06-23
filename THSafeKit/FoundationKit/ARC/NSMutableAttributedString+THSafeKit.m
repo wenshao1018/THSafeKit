@@ -22,7 +22,6 @@
         [self exchangeImplementationsWithClass:@"NSConcreteMutableAttributedString" fromMethodSelector:@selector(addAttributes:range:) toMethodSelector:@selector(safe_addAttributes:range:) isInstanceMethod:YES];
         [self exchangeImplementationsWithClass:@"NSConcreteMutableAttributedString" fromMethodSelector:@selector(replaceCharactersInRange:withString:) toMethodSelector:@selector(safe_replaceCharactersInRange:withString:) isInstanceMethod:YES];
         [self exchangeImplementationsWithClass:@"NSConcreteMutableAttributedString" fromMethodSelector:@selector(setAttributes:range:) toMethodSelector:@selector(safe_setAttributes:range:) isInstanceMethod:YES];
-        
     });
 }
 

@@ -77,7 +77,7 @@
         [self safe_setValue:value forUndefinedKey:key];
     }
     @catch (NSException *exception) {
-        
+
     }
     @finally {
         
@@ -90,7 +90,7 @@
         [self safe_setValuesForKeysWithDictionary:keyedValues];
     }
     @catch (NSException *exception) {
-        
+
     }
     @finally {
         

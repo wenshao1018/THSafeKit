@@ -23,21 +23,24 @@
 
 - (void)safe_removeObjectForKey:(id)key
 {
-    if (!key) {
-        return;
+    @try {
+        [self safe_removeObjectForKey:key];
+    } @catch (NSException *exception) {
+        
+    } @finally {
+        
     }
-    [self safe_removeObjectForKey:key];
 }
 
 - (void)safe_setObject:(id)object forKey:(id <NSCopying>)key
 {
-    if (!object) {
-        return;
+    @try {
+        [self safe_setObject:object forKey:key];
+    } @catch (NSException *exception) {
+        
+    } @finally {
+        
     }
-    if (!key) {
-        return;
-    }
-    [self safe_setObject:object forKey:key];
 }
 
 @end

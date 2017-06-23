@@ -26,43 +26,68 @@
 
 - (unichar)safe_characterAtIndex:(NSUInteger)index
 {
-    if (index >= self.length) {
-        return 0;
+    unichar charIndex;
+    @try {
+        charIndex = [self safe_characterAtIndex:index];
+    } @catch (NSException *exception) {
+        
+    } @finally {
+        
     }
-    return [self safe_characterAtIndex:index];
+    return charIndex;
 }
 
 - (NSString *)safe_substringWithRange:(NSRange)range
 {
-    if (range.location + range.length > self.length) {
-        return self;
+    NSString *newStr = nil;
+    @try {
+        newStr = [self safe_substringWithRange:range];
+    } @catch (NSException *exception) {
+        
+    } @finally {
+        
     }
-    return [self safe_substringWithRange:range];
+    return newStr;
 }
 
 - (NSString *)safe_substringToIndex:(NSUInteger)to
 {
-    if (to > self.length) {
-        return self;
+    NSString *newStr = nil;
+    @try {
+        newStr = [self safe_substringToIndex:to];
+    } @catch (NSException *exception) {
+        
+    } @finally {
+        
     }
-    return [self safe_substringToIndex:to];
+    return newStr;
 }
 
 - (NSString *)safe_substringFromIndex:(NSUInteger)from
 {
-    if (from > self.length) {
-        return self;
+    NSString *newStr = nil;
+    @try {
+        newStr = [self safe_substringFromIndex:from];
+    } @catch (NSException *exception) {
+        
+    } @finally {
+        
     }
-    return [self safe_substringFromIndex:from];
+    return newStr;
 }
 
 
 - (NSString *)safe_stringByReplacingCharactersInRange:(NSRange)range withString:(NSString *)replacement
 {
-    if (range.location + range.length > self.length) {
-        return self;
+    NSString *newStr = nil;
+    @try {
+        newStr = [self safe_stringByReplacingCharactersInRange:range withString:replacement];
+    } @catch (NSException *exception) {
+        
+    } @finally {
+        
     }
-    return [self safe_stringByReplacingCharactersInRange:range withString:replacement];
+    return newStr;
 }
 
 - (NSString *)safe_stringByReplacingOccurrencesOfString:(NSString *)target withString:(NSString *)replacement options:(NSStringCompareOptions)options range:(NSRange)searchRange

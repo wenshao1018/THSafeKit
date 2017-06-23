@@ -26,10 +26,13 @@
 
 - (void)safe_appendString:(NSString *)aString
 {
-    if (!aString) {
-        return;
+    @try {
+        [self safe_appendString:aString];
+    } @catch (NSException *exception) {
+        
+    } @finally {
+        
     }
-    [self safe_appendString:aString];
 }
 
 - (void)safe_appendFormat:(NSString *)format, ... NS_FORMAT_FUNCTION(1,2)
@@ -46,22 +49,24 @@
 
 - (void)safe_setString:(NSString *)aString
 {
-    if (!aString) {
-        return;
+    @try {
+        [self safe_setString:aString];
+    } @catch (NSException *exception) {
+        
+    } @finally {
+        
     }
-    [self safe_setString:aString];
 }
 
 - (void)safe_insertString:(NSString *)aString atIndex:(NSUInteger)index
 {
-    if (index > [self length]) {
-        return;
+    @try {
+        [self safe_insertString:aString atIndex:index];
+    } @catch (NSException *exception) {
+        
+    } @finally {
+        
     }
-    if (!aString) {
-        return;
-    }
-    
-    [self safe_insertString:aString atIndex:index];
 }
 
 - (void)safe_deleteCharactersInRange:(NSRange)range
@@ -77,10 +82,13 @@
 
 - (void)safe_replaceCharactersInRange:(NSRange)range withString:(NSString *)aString
 {
-    if (range.location + range.length > self.length) {
-        return ;
+    @try {
+        [self safe_replaceCharactersInRange:range withString:aString];
+    } @catch (NSException *exception) {
+        
+    } @finally {
+        
     }
-    [self safe_replaceCharactersInRange:range withString:aString];
 }
 
 @end
