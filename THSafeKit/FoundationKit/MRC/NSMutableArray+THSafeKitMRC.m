@@ -22,10 +22,15 @@
 
 - (id)safe_objectAtIndex:(NSUInteger)index
 {
-    if (index >= self.count) {
-        return nil;
+    id object = nil;
+    @try {
+        object = [self safe_objectAtIndex:index];
+    } @catch (NSException *exception) {
+        
+    } @finally {
+        
     }
-    return [self safe_objectAtIndex:index];
+    return object;
 }
 
 @end
